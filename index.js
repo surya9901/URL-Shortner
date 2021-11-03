@@ -43,7 +43,7 @@ app.post('/create', (req, res) => {
     })
 });
 
-app.get('/:urlId', (req, res) => {
+app.get('/redirect/:urlId', (req, res) => {
     let urlShort = UrlModel.findOne({ shortUrl: req.params.urlId }, (err, data) => {
         if (err) throw err;
 
