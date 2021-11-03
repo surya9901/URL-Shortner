@@ -22,16 +22,16 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 text-center">
-        <h1>URL SHORTNER</h1>
+      <div class="col-lg-12 text-center mt-3">
+        <h1><i class="fa fa-external-link" aria-hidden="true"></i> <u>URL SHORTNER</u></h1>
       </div>
     </div>
 
-    <form action="/create" method="POST">
+    <form action="/create" method="POST" class="mt-3">
       <div class="row">
         <div class="input-group mb-3">
           <input type="text" name="longurl" class="form-control"
-            placeholder="Paste the URL which needs to be Shortned here..." aria-label="Recipient's username"
+            placeholder="Paste the URL which needs to be Shortned here..." aria-label="URL text"
             aria-describedby="button-addon2" />
           <input type="submit" class="btn btn-outline-secondary" value="Submit" />
         </div>
@@ -39,31 +39,34 @@
     </form>
 
     <% for(let i=0;i< urlResult.length;i++) { %>
-      <ol class="list-group list-group-numbered">
-        <li class="
-            list-group-item
-            d-flex
-            justify-content-between
-            align-items-start
-          ">
-          <div class="ms-2 me-auto">
-            <div class="fw-bold" style="display: flex; justify-content: space-between;">
-              <a href="/redirect/<%= urlResult[i].shortUrl %>" target="_blank">
-                Gshort.ly/<%= urlResult[i].shortUrl %></a>
-                <div class="count">
-                  <small>Total Click: </small>
-                  <span class="badge bg-primary rounded-pill">
-                    <%= urlResult[i].clickCount %>
-                  </span>
-                  <span class="badge bg-danger rounded-pill">
-                    <a href="/delete/<%= urlResult[i].id %>" style="text-decoration: none"><i class="fa fa-trash-o"
-                        style="color: whitesmoke" aria-hidden="true"></i> </a></span>
-                </div>
-              </div>
-            <%= urlResult[i].longUrl %>
+      <div class="list-group mt-2">
+        <div class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <a href="/redirect/<%= urlResult[i].shortUrl %>" target="_blank" class="mb-1" style="color: black;">
+              <b>Gshort.ly/<%= urlResult[i].shortUrl %></b>
+            </a>
+            <small>
+              Total Click: <%= urlResult[i].clickCount %>
+              <span>
+                <button class="badge bg-secondary rounded-pill" style="border: none;" onclick=location.reload()>
+                  <i class="fa fa-refresh" aria-hidden="true"></i>
+                </button>
+              </span>
+                <span class="badge bg-danger rounded-pill">
+                  <a href="/delete/<%= urlResult[i].id %>" style="text-decoration: none">
+                    <i class="fa fa-trash-o" style="color: whitesmoke" aria-hidden="true">
+                    </i>
+                  </a>
+                </span>
+            </small>
           </div>
-        </li>
-      </ol>
+          <p class="mb-1">
+            <small class="text-muted">
+              <%= urlResult[i].longUrl %>
+            </small>
+          </p>
+        </div>
+      </div>
       <% } %>
   </div>
 </body>
