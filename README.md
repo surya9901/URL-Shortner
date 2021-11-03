@@ -1,1 +1,1 @@
-<b>https://gshort-urlshortner.herokuapp.com/</b>
+[Click here to preview] (https://gshort-urlshortner.herokuapp.com/)
